@@ -1,12 +1,13 @@
 "use client";
 
-import { ButtonHTMLAttributes } from "react";
+import { LabelHTMLAttributes } from "react";
 import { Size, cn, Variant } from "./shared";
 
-interface ButttonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface LabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
   children: React.ReactNode;
   variant?: Variant;
   size?: Size;
+  disabled?: boolean;
 }
 
 const sizes: Record<Size, string> = {
@@ -49,18 +50,17 @@ const variants: Record<Variant, string> = {
 
 const base = cn("disabled:opacity-50", "active:opacity-80");
 
-export function Button({
-  variant = "primary",
+export function Label({
+  variant = "outline",
   size = "md",
   className,
-  type = "button",
   ...props
-}: ButttonProps) {
+}: LabelProps) {
   const style = cn(base, sizes[size], variants[variant], className);
 
   return (
-    <button type={type} className={style} {...props}>
+    <label className={style} {...props}>
       {props.children}
-    </button>
+    </label>
   );
 }
