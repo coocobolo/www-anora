@@ -1,7 +1,7 @@
 "use client";
 
-import { HTMLAttributes, ReactNode, useEffect, useRef, useState } from "react";
 import { cn } from "./shared";
+import { HTMLAttributes, ReactNode, useEffect, useRef, useState } from "react";
 
 interface AspectRatioProps extends HTMLAttributes<HTMLElement> {
   ratio: number;
@@ -32,7 +32,7 @@ const AspectRatio: React.FC<AspectRatioProps> = ({
   }, [maxHeight]);
 
   // Calculate maximum dimensions while maintaining the aspect ratio
-  let calculatedMaxHeight = maxHeight;
+  const calculatedMaxHeight = maxHeight;
   let calculatedMaxWidth;
 
   if (maxHeight) {
